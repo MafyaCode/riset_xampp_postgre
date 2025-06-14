@@ -70,6 +70,7 @@
                         <a href="#perbandingan" class="nav-link text-slate-600 hover:text-sky-700 px-3 py-2 rounded-md text-sm font-medium">Perbandingan</a>
                         <a href="#visualisasi" class="nav-link text-slate-600 hover:text-sky-700 px-3 py-2 rounded-md text-sm font-medium">Visualisasi</a>
                         <a href="#studi-kasus" class="nav-link text-slate-600 hover:text-sky-700 px-3 py-2 rounded-md text-sm font-medium">Studi Kasus</a>
+                        <a href="#instalasi" class="nav-link text-slate-600 hover:text-sky-700 px-3 py-2 rounded-md text-sm font-medium">Instalasi</a>
                         <a href="#rekomendasi" class="nav-link text-slate-600 hover:text-sky-700 px-3 py-2 rounded-md text-sm font-medium">Rekomendasi</a>
                     </div>
                 </div>
@@ -214,6 +215,45 @@
                         <div class="bg-red-500 text-white p-3 rounded-lg"><strong>5. Aplikasi Java (Beban Berat - Pemrosesan)</strong></div>
                     </div>
                     <p class="mt-4 text-slate-600 text-sm">Dengan MariaDB, aplikasi mungkin perlu menarik data mentah dalam jumlah besar, lalu melakukan agregasi dan kalkulasi di dalam kode Java. Ini lebih lambat dan membebani aplikasi.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="my-16 border-t border-slate-200"></div>
+
+        <section id="instalasi" class="scroll-mt-20">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-sky-900">Panduan Instalasi</h2>
+                <p class="mt-3 max-w-2xl mx-auto text-lg text-slate-600">Langkah-langkah dasar untuk menyiapkan lingkungan database Anda.</p>
+            </div>
+            <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                     <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 14V3"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-blue-700">Instalasi PostgreSQL</h3>
+                    </div>
+                    <div class="mt-4 space-y-3 text-slate-600">
+                        <p><strong>1. Unduh Installer:</strong> Kunjungi situs resmi PostgreSQL dan unduh versi yang sesuai dengan sistem operasi Anda.</p>
+                        <p><strong>2. Jalankan Instalasi:</strong> Ikuti petunjuk wizard. Anda akan diminta untuk menentukan direktori instalasi, direktori data, dan mengatur password untuk superuser (`postgres`).</p>
+                        <p><strong>3. Stack Builder (Opsional):</strong> Di akhir instalasi, Anda bisa menjalankan Stack Builder untuk menginstal driver dan alat bantu lain seperti pgAdmin (alat GUI untuk mengelola database).</p>
+                        <p><strong>4. Konfigurasi Koneksi:</strong> Agar aplikasi Java bisa terhubung, pastikan file `pg_hba.conf` mengizinkan koneksi dari `localhost`.</p>
+                    </div>
+                </div>
+                 <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-slate-100">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 14V3"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-700">Instalasi XAMPP (MariaDB)</h3>
+                    </div>
+                     <div class="mt-4 space-y-3 text-slate-600">
+                        <p><strong>1. Unduh Installer:</strong> Kunjungi situs Apache Friends dan unduh XAMPP untuk sistem operasi Anda.</p>
+                        <p><strong>2. Jalankan Instalasi:</strong> Ikuti petunjuk wizard. Anda dapat memilih komponen mana yang akan diinstal. Pastikan Apache dan MySQL (MariaDB) terpilih.</p>
+                        <p><strong>3. Jalankan Control Panel:</strong> Buka XAMPP Control Panel. Klik tombol "Start" di sebelah modul Apache dan MySQL untuk menjalankan server.</p>
+                        <p><strong>4. Akses Database:</strong> Database MariaDB siap digunakan. Anda dapat mengelolanya melalui `phpMyAdmin` dengan mengklik tombol "Admin" di sebelah modul MySQL.</p>
+                    </div>
                 </div>
             </div>
         </section>
