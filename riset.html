@@ -16,6 +16,7 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
         }
         .chart-container {
             position: relative;
@@ -53,14 +54,30 @@
             max-height: 500px;
             opacity: 1;
         }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-md">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
+                <div class="flex-shrink-0">
                     <span class="font-bold text-xl text-sky-800">SIS-DB</span>
                 </div>
                 <div class="hidden md:block">
@@ -69,22 +86,42 @@
                         <a href="#pengenalan" class="nav-link text-slate-600 hover:text-sky-700 px-3 py-2 rounded-md text-sm font-medium">Pengenalan</a>
                         <a href="#perbandingan" class="nav-link text-slate-600 hover:text-sky-700 px-3 py-2 rounded-md text-sm font-medium">Perbandingan</a>
                         <a href="#visualisasi" class="nav-link text-slate-600 hover:text-sky-700 px-3 py-2 rounded-md text-sm font-medium">Visualisasi</a>
-                        <a href="#studi-kasus" class="nav-link text-slate-600 hover:text-sky-700 px-3 py-2 rounded-md text-sm font-medium">Studi Kasus</a>
                         <a href="#instalasi" class="nav-link text-slate-600 hover:text-sky-700 px-3 py-2 rounded-md text-sm font-medium">Instalasi</a>
                         <a href="#rekomendasi" class="nav-link text-slate-600 hover:text-sky-700 px-3 py-2 rounded-md text-sm font-medium">Rekomendasi</a>
                     </div>
                 </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button id="hamburger-button" type="button" class="bg-slate-100 inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-slate-600 hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-100 focus:ring-sky-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Buka menu utama</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </nav>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#ringkasan" class="nav-link-mobile text-slate-600 hover:bg-slate-100 hover:text-sky-700 block px-3 py-2 rounded-md text-base font-medium">Ringkasan</a>
+                <a href="#pengenalan" class="nav-link-mobile text-slate-600 hover:bg-slate-100 hover:text-sky-700 block px-3 py-2 rounded-md text-base font-medium">Pengenalan</a>
+                <a href="#perbandingan" class="nav-link-mobile text-slate-600 hover:bg-slate-100 hover:text-sky-700 block px-3 py-2 rounded-md text-base font-medium">Perbandingan</a>
+                <a href="#visualisasi" class="nav-link-mobile text-slate-600 hover:bg-slate-100 hover:text-sky-700 block px-3 py-2 rounded-md text-base font-medium">Visualisasi</a>
+                <a href="#instalasi" class="nav-link-mobile text-slate-600 hover:bg-slate-100 hover:text-sky-700 block px-3 py-2 rounded-md text-base font-medium">Instalasi</a>
+                <a href="#rekomendasi" class="nav-link-mobile text-slate-600 hover:bg-slate-100 hover:text-sky-700 block px-3 py-2 rounded-md text-base font-medium">Rekomendasi</a>
+            </div>
+        </div>
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         
-        <section id="ringkasan" class="scroll-mt-20 text-center">
+        <section id="ringkasan" class="scroll-mt-20 text-center fade-in-section">
             <h1 class="text-4xl md:text-5xl font-bold text-sky-900 tracking-tight">Analisis Database untuk Sistem Informasi Sekolah</h1>
             <p class="mt-4 max-w-3xl mx-auto text-lg text-slate-600">Sebuah analisis komparatif antara PostgreSQL dan MariaDB untuk mendukung pemilihan teknologi basis data yang tepat bagi proyek Anda.</p>
             
-            <div class="mt-10 bg-white p-8 rounded-xl shadow-lg border border-slate-200 text-left">
+            <div class="mt-10 bg-white p-8 rounded-xl shadow-lg border border-slate-200 text-left card">
                 <h2 class="text-2xl font-bold text-sky-800">Abstrak & Hasil Utama</h2>
                 <p class="mt-3 text-slate-600">Dokumen ini mengevaluasi PostgreSQL dan MariaDB untuk proyek Aplikasi Sistem Informasi Sekolah (SIS). Kriteria evaluasi mencakup integritas data, kinerja query, fleksibilitas skema, dan kemudahan integrasi dengan Java Swing dan JasperReports. Hasilnya menunjukkan bahwa meskipun kedua DBMS mampu memenuhi kebutuhan dasar, **PostgreSQL menawarkan keunggulan signifikan dalam hal keandalan data jangka panjang dan kapabilitas analitik**, yang sangat penting untuk fungsionalitas laporan dan rekomendasi.</p>
                 <div class="mt-6 bg-sky-50 border-l-4 border-sky-500 p-4 rounded-r-lg">
@@ -93,15 +130,15 @@
             </div>
         </section>
 
-        <div class="my-16 border-t border-slate-200"></div>
+        <div class="my-16 border-t border-slate-200 fade-in-section"></div>
 
-        <section id="pengenalan" class="scroll-mt-20">
+        <section id="pengenalan" class="scroll-mt-20 fade-in-section">
             <div class="text-center">
                 <h2 class="text-3xl font-bold text-sky-900">Pengenalan Dasar</h2>
                 <p class="mt-3 max-w-2xl mx-auto text-lg text-slate-600">Sebelum membandingkan, mari kita pahami peran masing-masing teknologi dengan analogi sederhana.</p>
             </div>
             <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 flex flex-col">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 flex flex-col card">
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 flex items-center justify-center rounded-full bg-slate-100">
                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
@@ -117,7 +154,7 @@
                         </div>
                     </div>
                 </div>
-                 <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 flex flex-col">
+                 <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 flex flex-col card">
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -136,9 +173,9 @@
             </div>
         </section>
         
-        <div class="my-16 border-t border-slate-200"></div>
+        <div class="my-16 border-t border-slate-200 fade-in-section"></div>
 
-        <section id="perbandingan" class="scroll-mt-20">
+        <section id="perbandingan" class="scroll-mt-20 fade-in-section">
             <div class="text-center">
                 <h2 class="text-3xl font-bold text-sky-900">Perbandingan Interaktif</h2>
                 <p class="mt-3 max-w-2xl mx-auto text-lg text-slate-600">Pilih kriteria evaluasi di bawah ini untuk melihat perbandingan mendalam antara PostgreSQL dan MariaDB secara berdampingan.</p>
@@ -148,7 +185,7 @@
             </div>
 
             <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 card">
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -157,7 +194,7 @@
                     </div>
                     <div id="pg-content" class="mt-4 text-slate-600 prose prose-blue"></div>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 card">
                     <div class="flex items-center gap-4">
                          <div class="w-12 h-12 flex items-center justify-center rounded-full bg-teal-100">
                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -169,30 +206,30 @@
             </div>
         </section>
 
-        <div class="my-16 border-t border-slate-200"></div>
+        <div class="my-16 border-t border-slate-200 fade-in-section"></div>
 
-        <section id="visualisasi" class="scroll-mt-20">
+        <section id="visualisasi" class="scroll-mt-20 fade-in-section">
             <div class="text-center">
                 <h2 class="text-3xl font-bold text-sky-900">Skor Visual</h2>
                 <p class="mt-3 max-w-2xl mx-auto text-lg text-slate-600">Visualisasi ini merangkum skor perbandingan pada setiap kriteria evaluasi, memberikan gambaran cepat tentang kekuatan masing-masing database.</p>
             </div>
-            <div class="mt-10 bg-white p-6 rounded-xl shadow-md border border-slate-200">
+            <div class="mt-10 bg-white p-6 rounded-xl shadow-lg border border-slate-200 card">
                 <div class="chart-container">
                     <canvas id="comparisonChart"></canvas>
                 </div>
             </div>
         </section>
 
-        <div class="my-16 border-t border-slate-200"></div>
+        <div class="my-16 border-t border-slate-200 fade-in-section"></div>
         
-        <section id="studi-kasus" class="scroll-mt-20">
+        <section id="studi-kasus" class="scroll-mt-20 fade-in-section">
             <div class="text-center">
                 <h2 class="text-3xl font-bold text-sky-900">Studi Kasus: Fungsionalitas Laporan</h2>
                  <p class="mt-3 max-w-2xl mx-auto text-lg text-slate-600">Bagaimana pilihan database memengaruhi pembuatan laporan dengan JasperReports? Bagian ini mengilustrasikan alur kerja dan beban pemrosesan pada kedua skenario.</p>
             </div>
             
             <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 card">
                     <h3 class="text-xl font-bold text-blue-700">Skenario PostgreSQL</h3>
                     <p class="text-sm text-slate-500 mt-1">Beban pemrosesan berat dilakukan di sisi database.</p>
                     <div class="mt-4 space-y-2 font-mono text-sm">
@@ -204,7 +241,7 @@
                     </div>
                     <p class="mt-4 text-slate-600 text-sm">Dengan PostgreSQL, kalkulasi rumit dieksekusi efisien di database. Aplikasi Java hanya menerima hasil akhir, menghasilkan laporan lebih cepat dan beban aplikasi lebih ringan.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 card">
                     <h3 class="text-xl font-bold text-teal-700">Skenario MariaDB</h3>
                     <p class="text-sm text-slate-500 mt-1">Beban pemrosesan berat bergeser ke sisi aplikasi.</p>
                      <div class="mt-4 space-y-2 font-mono text-sm">
@@ -219,15 +256,15 @@
             </div>
         </section>
 
-        <div class="my-16 border-t border-slate-200"></div>
+        <div class="my-16 border-t border-slate-200 fade-in-section"></div>
 
-        <section id="instalasi" class="scroll-mt-20">
+        <section id="instalasi" class="scroll-mt-20 fade-in-section">
             <div class="text-center">
                 <h2 class="text-3xl font-bold text-sky-900">Panduan Instalasi</h2>
                 <p class="mt-3 max-w-2xl mx-auto text-lg text-slate-600">Langkah-langkah dasar untuk menyiapkan lingkungan database Anda.</p>
             </div>
             <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 card">
                      <div class="flex items-center gap-4">
                         <div class="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100">
                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 14V3"></path></svg>
@@ -241,7 +278,7 @@
                         <p><strong>4. Konfigurasi Koneksi:</strong> Agar aplikasi Java bisa terhubung, pastikan file `pg_hba.conf` mengizinkan koneksi dari `localhost`.</p>
                     </div>
                 </div>
-                 <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                 <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 card">
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 flex items-center justify-center rounded-full bg-slate-100">
                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 14V3"></path></svg>
@@ -258,10 +295,10 @@
             </div>
         </section>
 
-        <div class="my-16 border-t border-slate-200"></div>
+        <div class="my-16 border-t border-slate-200 fade-in-section"></div>
 
-        <section id="rekomendasi" class="scroll-mt-20">
-            <div class="bg-gradient-to-r from-sky-700 to-cyan-600 text-white p-8 md:p-12 rounded-2xl text-center shadow-2xl">
+        <section id="rekomendasi" class="scroll-mt-20 fade-in-section">
+            <div class="bg-gradient-to-r from-sky-800 to-cyan-700 text-white p-8 md:p-12 rounded-2xl text-center shadow-2xl card">
                 <h2 class="text-3xl font-bold">Rekomendasi Akhir</h2>
                 <p class="mt-4 max-w-3xl mx-auto text-lg opacity-90">Berdasarkan analisis komprehensif, keputusan telah dibuat untuk memberikan fondasi terbaik bagi Aplikasi Sistem Informasi Sekolah.</p>
                 <div class="mt-8 bg-white/20 p-6 rounded-xl backdrop-blur-sm max-w-2xl mx-auto">
@@ -275,6 +312,27 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger Menu Logic
+            const hamburgerButton = document.getElementById('hamburger-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
+
+            hamburgerButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                hamburgerButton.querySelector('svg:first-child').classList.toggle('hidden');
+                hamburgerButton.querySelector('svg:last-child').classList.toggle('hidden');
+            });
+            
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    hamburgerButton.querySelector('svg:first-child').classList.remove('hidden');
+                    hamburgerButton.querySelector('svg:last-child').classList.add('hidden');
+                });
+            });
+
+
+            // Comparison Section Logic
             const comparisonData = {
                 integritas: {
                     title: 'Integritas & Konsistensi Data',
@@ -314,11 +372,11 @@
 
                 document.querySelectorAll('#criteria-buttons button').forEach(button => {
                     if (button.dataset.criterion === currentCriterion) {
-                        button.classList.remove('bg-slate-200', 'text-slate-700');
-                        button.classList.add('bg-sky-600', 'text-white', 'shadow');
+                        button.classList.remove('bg-slate-200', 'text-slate-700', 'hover:bg-slate-300');
+                        button.classList.add('bg-sky-600', 'text-white', 'shadow-lg');
                     } else {
-                        button.classList.add('bg-slate-200', 'text-slate-700');
-                        button.classList.remove('bg-sky-600', 'text-white', 'shadow');
+                        button.classList.add('bg-slate-200', 'text-slate-700', 'hover:bg-slate-300');
+                        button.classList.remove('bg-sky-600', 'text-white', 'shadow-lg');
                     }
                 });
             }
@@ -327,7 +385,7 @@
                 const data = comparisonData[key];
                 const button = document.createElement('button');
                 button.dataset.criterion = key;
-                button.className = 'flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200';
+                button.className = 'flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 transform hover:scale-105';
                 button.innerHTML = `${data.icon} ${data.title}`;
                 button.onclick = () => {
                     currentCriterion = key;
@@ -338,6 +396,7 @@
 
             updateView();
 
+            // Chart Logic
             const ctx = document.getElementById('comparisonChart').getContext('2d');
             new Chart(ctx, {
                 type: 'radar',
@@ -376,17 +435,17 @@
                     maintainAspectRatio: false,
                     scales: {
                         r: {
-                            angleLines: {
-                                color: 'rgba(0, 0, 0, 0.1)'
-                            },
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.1)'
-                            },
+                            angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                            grid: { color: 'rgba(0, 0, 0, 0.1)' },
                             pointLabels: {
-                                font: {
-                                    size: 12
-                                },
-                                color: '#334155'
+                                font: { size: 12 },
+                                color: '#334155',
+                                 callback: function(label) {
+                                    if (window.innerWidth < 768) {
+                                        return label.split(' ');
+                                    }
+                                    return label;
+                                }
                             },
                             ticks: {
                                 backdropColor: 'rgba(255, 255, 255, 0.75)',
@@ -398,19 +457,13 @@
                         }
                     },
                     plugins: {
-                        legend: {
-                            position: 'top',
-                        },
+                        legend: { position: 'top' },
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
                                     let label = context.dataset.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    if (context.parsed.r !== null) {
-                                        label += context.parsed.r;
-                                    }
+                                    if (label) label += ': ';
+                                    if (context.parsed.r !== null) label += context.parsed.r;
                                     return label;
                                 }
                             }
@@ -419,9 +472,9 @@
                 }
             });
 
+            // Active Nav Link on Scroll Logic
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-link');
-
             window.addEventListener('scroll', () => {
                 let current = '';
                 sections.forEach(section => {
@@ -441,6 +494,7 @@
                 });
             });
 
+            // Details Toggle Logic
             document.querySelectorAll('.details-toggle').forEach(button => {
                 button.addEventListener('click', () => {
                     const targetId = button.dataset.target;
@@ -448,6 +502,19 @@
                     const isShown = targetElement.classList.toggle('show');
                     button.innerHTML = isShown ? 'Sembunyikan &uarr;' : 'Selengkapnya &darr;';
                 });
+            });
+
+            // Fade-in on Scroll Logic
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in-section').forEach(section => {
+                observer.observe(section);
             });
         });
     </script>
